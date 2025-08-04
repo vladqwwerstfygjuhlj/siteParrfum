@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Shop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="logo">ModernShop</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#products">Products</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="navbar-right">
+            <div class="cart-icon" id="cartIcon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="animate-text">Welcome to ModernShop</h1>
+            <p class="animate-text">Discover premium men's perfumes from top brands. Enjoy fast delivery, secure payments, and exclusive offers!</p>
+            <ul class="hero-list animate-text">
+                <li>1000+ products in stock</li>
+                <li>Fast & free shipping</li>
+                <li>24/7 customer support</li>
+                <li>Easy returns and secure checkout</li>
+            </ul>
+            <button class="cta-button" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">Shop Now</button>
+        </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="featured-products" id="products">
+        <h2>Men's Perfumes</h2>
+        <div class="product-grid">
+            <!-- 20 PRODUCTS -->
+            {% for i in range(1,21) %}
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1585386959984-a41552231695?auto=format&fit=crop&w=400&q=80" alt="Perfume {{ i }}">
+                </div>
+                <div class="product-info">
+                    <h3>Perfume {{ i }}</h3>
+                    <p class="desc">Elegant and masculine fragrance for every occasion.</p>
+                    <p class="price">${{ (49.99 + i) | round(2) }}</p>
+                    <button class="add-to-cart" data-id="{{ i }}">Add to Cart</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about-section">
+        <h2>About Us</h2>
+        <p>ModernShop offers the latest collection of men's perfumes from luxury brands. We guarantee high-quality products and a pleasant shopping experience.</p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact-section">
+        <h2>Contact Us</h2>
+        <p>Have questions? Reach out to us at <a href="mailto:info@modernshop.com">info@modernshop.com</a> or call (555) 123-4567.</p>
+    </section>
+</body>
+</html>
