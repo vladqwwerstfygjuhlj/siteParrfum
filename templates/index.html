@@ -1,22 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Shop</title>
+    <title>ModernShop — Чоловічі парфуми</title>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- NAVIGATION -->
     <nav class="navbar">
+        <button class="theme-toggle" onclick="toggleTheme()">Змінити тему</button>
+
         <div class="logo">ModernShop</div>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#products">Products</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
+        <ul class="nav-links">
+            <li><a href="#">Головна</a></li>
+            <li><a href="#">Каталог</a></li>
+            <li><a href="#">Про нас</a></li>
+            <li><a href="#">Контакти</a></li>
+        </ul>
+        <div class="search-box">
+            <input type="text" placeholder="Пошук...">
+            <button><i class="fas fa-search"></i></button>
         </div>
+    </nav>
+
+    <main>
+        <h1>Ласкаво просимо до ModernShop!</h1>
+        <p>Тут ви знайдете найкращі чоловічі парфуми.</p>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+        <div class="burger" id="burger">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <div class="nav-links" id="navLinks">
+            <a href="#home">Головна</a>
+            <a href="#products">Товари</a>
+            <a href="#about">Про нас</a>
+            <a href="#contact">Контакти</a>
+        </div>
+
         <div class="navbar-right">
             <div class="cart-icon" id="cartIcon">
                 <i class="fas fa-shopping-cart"></i>
@@ -25,52 +52,295 @@
         </div>
     </nav>
 
-    <!-- HERO -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1 class="animate-text">Welcome to ModernShop</h1>
-            <p class="animate-text">Discover premium men's perfumes from top brands. Enjoy fast delivery, secure payments, and exclusive offers!</p>
-            <ul class="hero-list animate-text">
-                <li>1000+ products in stock</li>
-                <li>Fast & free shipping</li>
-                <li>24/7 customer support</li>
-                <li>Easy returns and secure checkout</li>
+            <h1>Ласкаво просимо до ModernShop</h1>
+            <p>Найкращі чоловічі парфуми — стиль, аромат, впевненість.</p>
+            <ul>
+                <li>20+ ексклюзивних ароматів</li>
+                <li>Безкоштовна доставка</li>
+                <li>Підтримка 24/7</li>
+                <li>Гарантія повернення</li>
             </ul>
-            <button class="cta-button" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">Shop Now</button>
+            <button class="cta-button" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">Купити зараз</button>
         </div>
     </section>
+<script>
+function toggleTheme(){
+    document.body.classList.toggle('dark');
+}
+</script>
 
-    <!-- PRODUCTS -->
+
     <section class="featured-products" id="products">
-        <h2>Men's Perfumes</h2>
-        <div class="product-grid">
-            <!-- 20 PRODUCTS -->
-            {% for i in range(1,21) %}
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1585386959984-a41552231695?auto=format&fit=crop&w=400&q=80" alt="Perfume {{ i }}">
-                </div>
-                <div class="product-info">
-                    <h3>Perfume {{ i }}</h3>
-                    <p class="desc">Elegant and masculine fragrance for every occasion.</p>
-                    <p class="price">${{ (49.99 + i) | round(2) }}</p>
-                    <button class="add-to-cart" data-id="{{ i }}">Add to Cart</button>
+    <h2>Чоловічі парфуми</h2>
+    <div class="product-grid">
+        <!-- 1 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://source.unsplash.com/400x400/?dior,perfume" alt="Dior Sauvage">
+            </div>
+            <div class="product-info">
+                <h3>Dior Sauvage</h3>
+                <p class="desc">Свіжий та енергійний аромат із цитрусовими нотами.</p>
+                <p class="price">$89.99</p>
+                <button class="add-to-cart" data-id="1">Додати в кошик</button>
+            </div>
+        </div>
+        <!-- 2 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://source.unsplash.com/400x400/?chanel,perfume" alt="Bleu de Chanel">
+            </div>
+            <div class="product-info">
+                <h3>Bleu de Chanel</h3>
+                <p class="desc">Деревний аромат із легкими пряними нотами.</p>
+                <p class="price">$94.99</p>
+                <button class="add-to-cart" data-id="2">Додати в кошик</button>
+            </div>
+        </div>
+        <!-- 3 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://source.unsplash.com/400x400/?armani,perfume" alt="Armani Code">
+            </div>
+            <div class="product-info">
+                <h3>Armani Code</h3>
+                <p class="desc">Елегантний аромат із м’якими деревними акордами.</p>
+                <p class="price">$79.99</p>
+                <button class="add-to-cart" data-id="3">Додати в кошик</button>
+            </div>
+        </div>
+        <!-- 4 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://source.unsplash.com/400x400/?hugo,boss,perfume" alt="Hugo Boss Bottled">
+            </div>
+            <div class="product-info">
+                <h3>Hugo Boss Bottled</h3>
+                <p class="desc">Класика для щоденного використання з фруктовими нотами.</p>
+                <p class="price">$69.99</p>
+                <button class="add-to-cart" data-id="4">Додати в кошик</button>
+            </div>
+        </div>
+        <!-- 5 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://source.unsplash.com/400x400/?versace,perfume" alt="Versace Eros">
+            </div>
+            <div class="product-info">
+                <h3>Versace Eros</h3>
+                <p class="desc">Свіжий аромат із нотами м’яти та ванілі.</p>
+                <p class="price">$74.99</p>
+                <button class="add-to-cart" data-id="5">Додати в кошик</button>
+            </div>
+        </div>
+        <!-- 6 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://source.unsplash.com/400x400/?paco,rabanne,perfume" alt="Paco Rabanne 1 Million">
+            </div>
+            <div class="product-info">
+                <h3>Paco Rabanne 1 Million</h3>
+                <p class="desc">Сміливий аромат із пряними та деревними нотами.</p>
+                <p class="price">$84.99</p>
+                <button class="add-to-cart" data-id="6">Додати в кошик</button>
+            </div>
+        </div>
+        <!-- 7 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://source.unsplash.com/400x400/?gucci,perfume" alt="Gucci Guilty">
+            </div>
+            <div class="product-info">
+                <h3>Gucci Guilty</h3>
+                <p class="desc">Витончений аромат для впевнених чоловіків.</p>
+                <p class="price">$89.99</p>
+                <button class="add-to-cart" data-id="7">Додати в кошик</button>
+            </div>
+        </div>
+        <!-- 8 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://source.unsplash.com/400x400/?ysl,perfume" alt="YSL La Nuit de L’Homme">
+            </div>
+            <div class="product-info">
+                <h3>YSL La Nuit de L’Homme</h3>
+                <p class="desc">Чуттєвий аромат для вечірніх виходів.</p>
+                <p class="price">$94.99</p>
+                <button class="add-to-cart" data-id="8">Додати в кошик</button>
+            </div>
+        </div>
+        <!-- 9 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://source.unsplash.com/400x400/?dolce,gabbana,perfume" alt="Dolce & Gabbana The One">
+            </div>
+            <div class="product-info">
+                <h3>Dolce & Gabbana The One</h3>
+                <p class="desc">Теплий, пряний аромат із тютюновими нотами.</p>
+                <p class="price">$89.99</p>
+                <button class="add-to-cart" data-id="9">Додати в кошик</button>
+            </div>
+        </div>
+        <!-- 10 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://source.unsplash.com/400x400/?prada,perfume" alt="Prada Luna Rossa">
+            </div>
+            <div class="product-info">
+                <h3>Prada Luna Rossa</h3>
+                <p class="desc">Свіжий аромат із нотами лаванди та цитрусів.</p>
+                <p class="price">$79.99</p>
+                <button class="add-to-cart" data-id="10">Додати в кошик</button>
+            </div>
+        </div>
+        <!-- 11 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://source.unsplash.com/400x400/?burberry,perfume" alt="Burberry Mr. Burberry">
+            </div>
+            <div class="product-info">
+                <h3>Burberry Mr. Burberry</h3>
+                <p class="desc">Стильний аромат із цитрусовими нотами.</p>
+                <p class="price">$74.99</p>
+                <button class="add-to-cart" data-id="11">Додати в кошик</button>
+            </div>
+        </div>
+        <!-- 12 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://source.unsplash.com/400x400/?mont,blanc,perfume" alt="Mont Blanc Legend">
+            </div>
+            <div class="product-info">
+                <h3>Mont Blanc Legend</h3>
+                <p class="desc">Легкий аромат із нотами бергамоту та лаванди.</p>
+                <p class="price">$69.99</p>
+                <button class="add-to-cart" data-id="12">Додати в кошик</button>
+            </div>
+        </div>
+        <!-- 13 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://source.unsplash.com/400x400/?kenzo,perfume" alt="Kenzo Homme">
+            </div>
+            <div class="product-info">
+                <h3>Kenzo Homme</h3>
+                <p class="desc">Свіжий морський аромат для повсякденного стилю.</p>
+                <p class="price">$59.99</p>
+                <button class="add-to-cart" data-id="13">Додати в кошик</button>
+            </div>
+        </div>
+        <!-- 14 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://source.unsplash.com/400x400/?tom,ford,perfume" alt="Tom Ford Noir">
+            </div>
+            <div class="product-info">
+                <h3>Tom Ford Noir</h3>
+                <p class="desc">Розкішний аромат із пряними та деревними нотами.</p>
+                <p class="price">$129.99</p>
+                <button class="add-to-cart" data-id="14">Додати в кошик</button>
+            </div>
+        </div>
+        <!-- 15 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://source.unsplash.com/400x400/?givenchy,perfume" alt="Givenchy Gentlemen Only">
+            </div>
+            <div class="product-info">
+                <h3>Givenchy Gentlemen Only</h3>
+                <p class="desc">Елегантний аромат із нотами дерева та спецій.</p>
+                <p class="price">$94.99</p>
+                <button class="add-to-cart" data-id="15">Додати в кошик</button>
+            </div>
+        </div>
+        <!-- 16 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://source.unsplash.com/400x400/?azzaro,perfume" alt="Azzaro Wanted">
+            </div>
+            <div class="product-info">
+                <h3>Azzaro Wanted</h3>
+                <p class="desc">Динамічний аромат із цитрусовими акордами.</p>
+                <p class="price">$69.99</p>
+                <button class="add-to-cart" data-id="16">Додати в кошик</button>
+            </div>
+        </div>
+        <!-- 17 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://source.unsplash.com/400x400/?lacoste,perfume" alt="Lacoste L.12.12">
+            </div>
+            <div class="product-info">
+                <h3>Lacoste L.12.12</h3>
+                <p class="desc">Свіжий спортивний аромат для активних чоловіків.</p>
+                <p class="price">$64.99</p>
+                <button class="add-to-cart" data-id="17">Додати в кошик</button>
+            </div>
+        </div>
+        <!-- 18 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://source.unsplash.com/400x400/?hermes,perfume" alt="Hermès Terre d’Hermès">
+            </div>
+            <div class="product-info">
+                <h3>Hermès Terre d’Hermès</h3>
+                <p class="desc">Витончений аромат із деревними та цитрусовими нотами.</p>
+                <p class="price">$109.99</p>
+                <button class="add-to-cart" data-id="18">Додати в кошик</button>
+            </div>
+        </div>
+        <!-- 19 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://source.unsplash.com/400x400/?ferrari,perfume" alt="Ferrari Scuderia Black">
+            </div>
+            <div class="product-info">
+                <h3>Ferrari Scuderia Black</h3>
+                <p class="desc">Енергійний аромат для любителів швидкості.</p>
+                <p class="price">$54.99</p>
+                <button class="add-to-cart" data-id="19">Додати в кошик</button>
+            </div>
+        </div>
+        <!-- 20 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://source.unsplash.com/400x400/?bvlgari,perfume" alt="Bvlgari Man in Black">
+            </div>
+            <div class="product-info">
+                <h3>Bvlgari Man in Black</h3>
+                <p class="desc">Сильний аромат із пряними та деревними акордами.</p>
+                <p class="price">$99.99</p>
+                <button class="add-to-cart" data-id="20">Додати в кошик</button>
+            </div>
+        </div>
+    </div>
+</section>
+
                 </div>
             </div>
-            {% endfor %}
         </div>
     </section>
 
-    <!-- ABOUT -->
     <section id="about" class="about-section">
-        <h2>About Us</h2>
-        <p>ModernShop offers the latest collection of men's perfumes from luxury brands. We guarantee high-quality products and a pleasant shopping experience.</p>
+        <h2>Про нас</h2>
+        <p>ModernShop — це магазин, де стиль і якість поєднуються. Ми пропонуємо найкращі чоловічі парфуми з усього світу.</p>
     </section>
 
-    <!-- CONTACT -->
     <section id="contact" class="contact-section">
-        <h2>Contact Us</h2>
-        <p>Have questions? Reach out to us at <a href="mailto:info@modernshop.com">info@modernshop.com</a> or call (555) 123-4567.</p>
+        <h2>Контакти</h2>
+        <p>Зв'яжіться з нами: <a href="mailto:info@modernshop.com">info@modernshop.com</a> або телефонуйте (555) 123-4567.</p>
     </section>
+
+    <!-- JavaScript для меню-бургера -->
+    <script>
+        const burger = document.getElementById('burger');
+        const navLinks = document.getElementById('navLinks');
+
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
